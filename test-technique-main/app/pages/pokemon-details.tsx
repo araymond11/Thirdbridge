@@ -11,7 +11,7 @@ import {
 import { Evolution, EvolutionChainLink } from "../../src/models";
 import { capitalizeFirstLetter } from "../../src/utils";
 
-export default function Page() {
+export default function PokemonDetailsPage() {
   const { id } = useLocalSearchParams();
   const pokemonId = Array.isArray(id) ? id.at(0) : id;
 

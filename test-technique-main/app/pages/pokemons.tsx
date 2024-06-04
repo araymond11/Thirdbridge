@@ -20,7 +20,7 @@ import { extractPokemonId } from "../../src/utils";
 
 const PAGE_SIZE = 20;
 
-export default function Page() {
+export default function PokemonsPage() {
   const insets = useSafeAreaInsets();
   const { data, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage } =
     useInfiniteQuery<

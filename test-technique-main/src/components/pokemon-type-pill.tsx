@@ -2,11 +2,13 @@ import { StyleSheet, Text, View } from "react-native";
 import { PokemonType, pokemonTypeMap } from "../models";
 import { Colors } from "../utils";
 
-interface PokemonTypePill {
+interface PokemonTypePillProps {
   type: string;
 }
 
-export function PokemonTypePill({ type }: PokemonTypePill) {
+export const PokemonTypePill: React.FunctionComponent<PokemonTypePillProps> = ({
+  type,
+}) => {
   const pokemonType = type?.toUpperCase() as keyof typeof PokemonType;
   const { color } = pokemonTypeMap[pokemonType];
 
@@ -15,7 +17,7 @@ export function PokemonTypePill({ type }: PokemonTypePill) {
       <Text style={styles.type}>{pokemonType}</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   pill: {

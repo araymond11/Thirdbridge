@@ -15,10 +15,9 @@ interface PokemonEvolutionListProps {
   isLoading: boolean;
 }
 
-export default function PokemonEvolutionList({
-  evolutions,
-  isLoading,
-}: PokemonEvolutionListProps) {
+export const PokemonEvolutionList: React.FunctionComponent<
+  PokemonEvolutionListProps
+> = ({ evolutions, isLoading }) => {
   return (
     <View>
       <Text style={styles.title}>Evolutions</Text>
@@ -51,7 +50,7 @@ export default function PokemonEvolutionList({
       )}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   title: {

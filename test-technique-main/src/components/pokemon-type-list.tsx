@@ -7,7 +7,10 @@ interface PokemonTypeListProps {
   isLoading: boolean;
 }
 
-export function PokemonTypeList({ types, isLoading }: PokemonTypeListProps) {
+export const PokemonTypeList: React.FunctionComponent<PokemonTypeListProps> = ({
+  types,
+  isLoading,
+}) => {
   return (
     <>
       {isLoading && <ActivityIndicator />}
@@ -21,4 +24,4 @@ export function PokemonTypeList({ types, isLoading }: PokemonTypeListProps) {
       )}
     </>
   );
-}
+};

@@ -13,7 +13,10 @@ interface PokemonMoveListProps {
   isLoading: boolean;
 }
 
-export function PokemonMoveList({ moves, isLoading }: PokemonMoveListProps) {
+export const PokemonMoveList: React.FunctionComponent<PokemonMoveListProps> = ({
+  moves,
+  isLoading,
+}) => {
   const firstFiveMoves = moves.slice(0, 5);
 
   return (
@@ -31,7 +34,7 @@ export function PokemonMoveList({ moves, isLoading }: PokemonMoveListProps) {
       )}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   title: {
