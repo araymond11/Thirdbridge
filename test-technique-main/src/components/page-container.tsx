@@ -36,19 +36,19 @@ export const PageContainer: FunctionComponent<PropsWithChildren<Props>> = ({
   const lastScrollY = useRef(0);
 
   const animatedHeaderHeight = scrollOffsetY.interpolate({
-    inputRange: [0, 150],
+    inputRange: [0, INITIAL_IMAGE_SIZE],
     outputRange: [(imageUrl ? INITIAL_IMAGE_SIZE : 32) + 65, 32 + 65],
     extrapolate: "clamp",
   });
 
   const imageSize = scrollOffsetY.interpolate({
-    inputRange: [0, 150],
+    inputRange: [0, INITIAL_IMAGE_SIZE],
     outputRange: [INITIAL_IMAGE_SIZE, 32],
     extrapolate: "clamp",
   });
 
   const imagePositionX = scrollOffsetY.interpolate({
-    inputRange: [0, 150],
+    inputRange: [0, INITIAL_IMAGE_SIZE],
     outputRange: [0, 160],
     extrapolate: "clamp",
   });
