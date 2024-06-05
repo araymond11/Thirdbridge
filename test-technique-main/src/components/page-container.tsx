@@ -22,8 +22,6 @@ type Props = {
 const { height: screenHeight } = Dimensions.get("window");
 
 const INITIAL_IMAGE_SIZE = screenHeight * 0.25;
-const HEADER_MIN_HEIGHT = 45;
-const SCROLL_DISTANCE = INITIAL_IMAGE_SIZE + HEADER_MIN_HEIGHT;
 
 export const PageContainer: FunctionComponent<PropsWithChildren<Props>> = ({
   children,
@@ -39,7 +37,7 @@ export const PageContainer: FunctionComponent<PropsWithChildren<Props>> = ({
 
   const animatedHeaderHeight = scrollOffsetY.interpolate({
     inputRange: [0, 150],
-    outputRange: [(imageUrl ? INITIAL_IMAGE_SIZE : 32) + 60, 32 + 60],
+    outputRange: [(imageUrl ? INITIAL_IMAGE_SIZE : 32) + 65, 32 + 65],
     extrapolate: "clamp",
   });
 
@@ -64,23 +62,21 @@ export const PageContainer: FunctionComponent<PropsWithChildren<Props>> = ({
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: (_, gestureState) => {
-        return Math.abs(gestureState.dy) > 10;
+        return Math.abs(gestureState.dy) > 0;
       },
       onPanResponderMove: (_, gestureState) => {
-        const dy = gestureState.dy;
-        const newScrollY = Math.min(
-          Math.max(lastScrollY.current - dy, 0),
-          SCROLL_DISTANCE
+        const adjustedScrollY = Math.max(
+          lastScrollY.current - gestureState.dy,
+          0
         );
-        scrollOffsetY.setValue(newScrollY);
+        scrollOffsetY.setValue(adjustedScrollY);
       },
       onPanResponderRelease: (_, gestureState) => {
-        const dy = gestureState.dy;
-        lastScrollY.current = Math.min(
-          Math.max(lastScrollY.current - dy, 0),
-          SCROLL_DISTANCE
+        const adjustedScrollY = Math.max(
+          lastScrollY.current - gestureState.dy,
+          0
         );
-        scrollOffsetY.setValue(lastScrollY.current);
+        scrollOffsetY.setValue(adjustedScrollY);
       },
     })
   ).current;

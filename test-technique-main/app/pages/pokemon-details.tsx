@@ -95,7 +95,6 @@ export default function PokemonDetailsPage() {
           moves={pokemonDetails.data.moves}
           isLoading={isLoadingDetails}
         />
-
         <PokemonEvolutionList
           evolutions={evolutions}
           isLoading={isLoadingSpecies || isLoadingEvolutions}
