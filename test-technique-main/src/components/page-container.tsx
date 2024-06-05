@@ -65,17 +65,25 @@ export const PageContainer: FunctionComponent<PropsWithChildren<Props>> = ({
         return Math.abs(gestureState.dy) > 0;
       },
       onPanResponderMove: (_, gestureState) => {
-        const adjustedScrollY = Math.max(
-          lastScrollY.current - gestureState.dy,
-          0
+        let adjustedScrollY = lastScrollY.current - gestureState.dy;
+
+        adjustedScrollY = Math.max(
+          0,
+          Math.min(adjustedScrollY, INITIAL_IMAGE_SIZE)
         );
+
         scrollOffsetY.setValue(adjustedScrollY);
       },
       onPanResponderRelease: (_, gestureState) => {
-        const adjustedScrollY = Math.max(
-          lastScrollY.current - gestureState.dy,
-          0
+        let adjustedScrollY = lastScrollY.current - gestureState.dy;
+
+        adjustedScrollY = Math.max(
+          0,
+          Math.min(adjustedScrollY, INITIAL_IMAGE_SIZE)
         );
+
+        lastScrollY.current = adjustedScrollY;
+
         scrollOffsetY.setValue(adjustedScrollY);
       },
     })
